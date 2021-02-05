@@ -1,3 +1,4 @@
+import keyboard
 import os
 import random
 import time
@@ -14,9 +15,17 @@ This is a electronic dice. Press enter to the roll the dice.
                  '-------'
 
 ''')
-time.sleep(3)
-die=str(random.randint(1,6))
-file=die+".txt"
-with open(f"{file}") as f:
-    face=f.read()
-print(face)
+keyboard.wait('Enter')
+os.system('cls')
+def roll_dice():
+    die=str(random.randint(1,6))
+    file=die+".txt"
+    with open(f"{file}") as f:
+        face=f.read()
+    print(face)
+    print("Press enter to roll again.")
+    keyboard.wait('Enter')
+    os.system('cls')
+    roll_dice()
+
+roll_dice()
